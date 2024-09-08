@@ -59,10 +59,17 @@ document.addEventListener("DOMContentLoaded", function () {
       spinnerContainer.classList.add("d-none");
     }
   };
-  // Show All button eventHandler
-  document.getElementById('btn-show-all').addEventListener("click", function(){
-  searchProcess();
-  })
+  document.getElementById('btn-show-all').addEventListener('click', function() {
+    const searchField = document.getElementById('search-field');
+    const searchText = searchField.value;
+
+    // If no search term is entered, call loadPhones to show all results
+    if (searchText === '') {
+        loadPhones('iphone', undefined); // Empty search term, no data limit
+    } else {
+      searchProcess(); // If there is a search term, call processSearch
+    }
+});
 
   // Search button eventhandler
   document.getElementById("btn-search").addEventListener("click", function (event) {
